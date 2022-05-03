@@ -22,15 +22,14 @@ contract Raffle {
     }
 
     function enterRaffle() external payable {
-        // require(msg.value > i_entranceFee, "Not enough money sent!");
         if(msg.value < i_entranceFee) {
             revert Raffle__SendMoreToEnterRaffle();
         }
-        // Open, Calculating a winner
+
         if(s_raffleState != RaffleState.Open) {
             revert Raffle__RaffleNotOpen();
         }
-        // You can enter!
+
         s_players.push(payable(msg.sender));
         emit RaffleEnter(msg.sender);
     }

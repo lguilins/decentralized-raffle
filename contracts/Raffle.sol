@@ -51,7 +51,8 @@ contract Raffle {
         bool isOpen = RaffleState.Open == s_raffleState;
         bool timePassed = ((block.timestamp - s_lastTimestamp) > i_interval);
         bool hasBalance = address(this).balance > 0;
-        upkeepNeeded = (timePassed && isOpen && hasBalance);
+        bool hasPlayers = s_players.length > 0;
+        upkeepNeeded = (timePassed && isOpen && hasBalance && hasPlayers);
         return (upkeepNeeded, "0x0");
     }
 }

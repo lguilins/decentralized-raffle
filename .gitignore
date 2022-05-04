@@ -1,2 +1,11 @@
 node_modules
+
+#hardhat
+artifacts
+cache
+deployments
+coverage
+coverage.json
+typechain
+
 .env
